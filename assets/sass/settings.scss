@@ -1,0 +1,66 @@
+$host_url: '/';
+
+$namespace: "APP";
+$rem-base: 16 !default;
+
+$font-size: 16px;
+$line-height: 18;
+$global-radius: 3px;
+$global-rounded:1000px;
+$btn-radius: $global-radius;
+$btn-rounded: $global-rounded;
+$container-width: 1200px;
+$row-width: 1000px;
+
+$total-columns: 12;
+$gutter-width: 16px;
+$default-float: left;
+
+//==========================================================================
+//TYPOGRAPHY
+//==========================================================================
+$font-path: '../fonts';
+$body-font-family: "proxima-nova", sans-serif;
+$header-font-family: "adobe-caslon-pro", serif;
+$alt-font-family: 'Courier New';
+
+$heading-xsmall:12px; // 20px
+$heading-small:20px; // 24px
+$heading-medium:36px;
+$heading-large:42px;
+$heading-xlarge:60px;
+
+$body-xsmall:12px;
+$body-small:14px;
+$body-medium:16px;
+$body-large:18px;
+$body-xlarge:24px;
+
+//==========================================================================
+//EASING
+//==========================================================================
+$ease-snap: cubic-bezier(0.78,0.08,0.94,0.47);
+
+//==========================================================================
+//IMAGES
+//==========================================================================
+$img-path: '../img';
+
+
+//==========================================================================
+//COLORS
+//==========================================================================
+$white: #faf9f6;
+$black: #101010;
+$gray: #666666;
+
+
+//==========================================================================
+//MEDIA QUERIES
+//==========================================================================
+$xsmall-range: (0em, 40em) !default;
+$small-range: (40.063em, 48em) !default;
+$medium-range: (48.063em, 64em) !default;
+$large-range: (64.063em, 90em) !default;
+$xlarge-range: (90.063em, 110em) !default;
+$xxlarge-range: (110.063em, 99999999em) !default;

@@ -1,0 +1,37 @@
+/**
+DISPLAY	
+**/
+.display{
+	&--block{display:block;}
+	&--inline{display:inline;}
+	&--inline-block{display:inline-block;}
+	&--table{display:table;}
+	&--table-cell{display:table-cell;}
+	&--none{display: none;}
+}
+.overflow{
+	&--auto{overflow: auto;}
+	&--hidden{overflow: hidden;}
+}
+.width{
+	&--full{width: 100%;}
+	&--auto{width: auto;}
+	&--100vw{width: 100vw;}
+	&--50vw{width: 50vw;}
+}
+.max-width{
+	&--full{max-width: 100%;}
+}
+.height{
+	&--full{height: 100%;}
+	&--auto{height: auto;}
+	&--100vh{height: 100vh;}
+}
+.opacity{
+	&--0{opacity: 0;}
+	&--1{opacity: 1;}
+}
+.cursor{
+	&--default{cursor: default;}
+	&--pointer{cursor: pointer;}
+}

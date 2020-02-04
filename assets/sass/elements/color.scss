@@ -1,0 +1,10 @@
+.bg-color{
+	&--black{background-color: $black;}
+	&--white{background-color: $white;}
+	&--gray{background-color: $gray;}
+}
+.color{
+	&--black{color: $black;}
+	&--white{color: $white;}
+	&--gray{color: $gray;}
+}

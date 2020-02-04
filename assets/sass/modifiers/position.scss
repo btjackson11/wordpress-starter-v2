@@ -1,0 +1,55 @@
+/**
+POSITION
+**/
+.position{
+	&--absolute{position: absolute;}
+	&--relative{position: relative;}
+	&--fixed{position: fixed;}
+}
+.float{
+	&--left{float: left;}
+	&--right{float: right;}
+}
+.clear{
+	&--left{clear: left;}
+	&--right{clear: right;}
+	&--both{clear: both;}
+}
+.margin{
+	&-top{
+		&--0{margin-top: 0;}
+	}
+	&--centered{margin: 0 auto;}
+	&--0{margin: 0;}
+}
+.z-index{
+	&--neg99{z-index: -99;}
+	&--neg1{z-index: -1;}
+	&--0{z-index: 0;}
+	&--1{z-index: 1;}
+	&--10{z-index: 10;}
+	&--90{z-index: 90;}
+	&--99{z-index: 99;}
+}
+.bg-position{
+	&--righttop{background-position: right top;}
+	&--rightcenter{background-position: right center;}
+	&--rightbottom{background-position: right bottom;}
+	&--centertop{background-position: center top;}
+	&--centercenter{background-position: center center;}
+	&--centerbottom{background-position: center bottom;}
+	&--lefttop{background-position: left top;}
+	&--leftcenter{background-position: left center;}
+	&--leftbottom{background-position: left bottom;}
+}
+.bg-size{
+	&--cover{background-size: cover;}
+	&--contain{background-size: contain;}
+}
+.bg-repeat{
+	&--norepeat{background-repeat: no-repeat;}
+	&--repeat{background-repeat: repeat;}
+}
+.width{
+	&--full{width: 100%;}
+}

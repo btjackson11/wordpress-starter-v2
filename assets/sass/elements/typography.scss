@@ -1,0 +1,109 @@
+/**
+TYPOGRAPHY 
+**/
+
+$text-sizes: xsmall, small, medium, large, xlarge, xxlarge;
+
+.text{	
+	font-weight:normal;
+	font-style:normal;
+
+	&--capitalize{text-transform: capitalize;}
+	&--uppercase{text-transform: uppercase;}
+	&--lowercase{text-transform: lowercase;}
+	&--left{text-align: left;}
+	&--center{text-align: center;}
+	&--right{text-align: right;}
+	&--underline{text-decoration: underline;}
+	
+	&-header{
+		&--bold{			
+			font-family: $header-font-family;
+			font-style: normal;
+			font-weight: 800;
+		}
+	}
+	&-body{
+		&--book{
+			font-family: $body-font-family;
+			font-style: normal;
+			font-weight: 400;
+		}
+		&--bold{
+			font-family: $body-font-family;
+			font-style: normal;
+			font-weight: 800;
+		}
+	}
+
+	@mixin typography-classes($query) {
+		$header-typography: $font-size;
+		$body-typography: $font-size;
+		
+		&-#{$query}{			
+			@each $size in $text-sizes{
+				@if $size == xsmall {
+					$header-typography: ($font-size*.75); //12px
+					$body-typography: ($font-size*.75); //12px
+				}
+				@else if $size == small {
+					$header-typography: ($font-size); //16px
+					$body-typography: ($font-size*.75+2); //14px
+				}
+				@else if $size == medium {
+					$header-typography: ($font-size+4); //20px
+					$body-typography: ($font-size); //16px
+				}
+				@else if $size == large {
+					$header-typography: ($font-size*2); //32px
+					$body-typography: ($font-size+2); //18px
+				}
+				@else if $size == xlarge {
+					$header-typography: ($font-size*3); //48px
+					$body-typography: ($font-size+8); //24px
+				}
+				@else if $size == xxlarge {
+					$header-typography: ($font-size*4.5); //72px
+					$body-typography: ($font-size*2); //32px
+				}
+				
+				&-header--#{$size}{
+					line-height: 125%;
+					@include set(font-size,$header-typography);
+				}
+				&-body--#{$size}{
+					line-height: 150%;
+					@include set(font-size,$body-typography);
+				}
+			}
+		}
+	}
+	@include typography-classes($query:xsu);
+	@media #{$xsmall-only}{
+		@include typography-classes($query:xso);
+	}
+	@media #{$small-up}{
+		@include typography-classes($query:smu);
+	}
+	@media #{$small-only}{
+		@include typography-classes($query:smo);
+	}
+	@media #{$medium-up}{
+		@include typography-classes($query:mdu);
+	}
+	@media #{$medium-only}{
+		@include typography-classes($query:mdo);
+	}
+	@media #{$large-up}{
+		@include typography-classes($query:lgu);
+	}
+	@media #{$large-only}{
+		@include typography-classes($query:lgo);
+	}
+	@media #{$xlarge-up}{
+		@include typography-classes($query:xlu);
+	}
+	@media #{$xlarge-only}{
+		@include typography-classes($query:xlo);
+	}
+}

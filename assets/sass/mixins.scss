@@ -1,0 +1,61 @@
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model; // Safari <= 5
+    -moz-box-sizing: $box-model; // Firefox <= 19
+    box-sizing: $box-model;
+}
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+    -moz-animation: $animation;
+    -ms-animation: $animation;
+    -o-animation:  $animation;
+    animation: $animation;
+}
+@mixin animation-iteration-count($animation-iteration-count) {
+	-webkit-animation: $animation-iteration-count;
+    -moz-animation: $animation-iteration-count;
+    -ms-animation: $animation-iteration-count;
+    -o-animation:  $animation-iteration-count;
+    animation: $animation-iteration-count;
+}
+@mixin transform-origin($transform-origin) {
+	-webkit-animation: $transform-origin;
+    -moz-animation: $transform-origin;
+    -ms-animation: $transform-origin;
+    -o-animation:  $transform-origin;
+	animation: $transform-origin;
+}
+@mixin user-select($user-select) {
+	-webkit-user-select: $user-select;
+    -moz-user-select: $user-select;
+    -ms-user-select: $user-select;
+    -o-user-select:  $user-select;
+	user-select: $user-select;
+}
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+    -moz-transform: $transform;
+    -ms-transform: $transform;
+    -o-transform:  $transform;
+	transform: $transform;
+}
+@mixin animation-fill-mode($animation-fill-mode) {
+	-webkit-animation: $animation-fill-mode;
+    -moz-animation: $animation-fill-mode;
+    -ms-animation: $animation-fill-mode;
+    -o-animation:  $animation-fill-mode;
+    animation: $animation-fill-mode;
+}
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+    -moz-transition: $transition;
+    -ms-transition: $transition;
+    -o-transition:  $transition;
+    transition: $transition;
+}
+@mixin keyframes($animation-name) {
+	@keyframes $animation-name {@content;}
+	@-moz-keyframes $animation-name {@content;}
+	@-webkit-keyframes $animation-name {@content;}
+	@-o-keyframes $animation-name {@content;}
+	@-ms-keyframes $animation-name {@content;}
+}

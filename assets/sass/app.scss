@@ -1,0 +1,40 @@
+//NORMALIZE
+@import "normalize";
+
+//SETTINGS
+@import "settings";
+
+//GLOBAL
+@import "app/functions";
+@import "app/mixins";
+@import "app/mediaqueries";
+@import "app/grid";
+@import "app/helpers";
+
+//ELEMENTS
+@import "elements/btn";
+@import "elements/typography";
+@import "elements/color"; 
+
+//MODIFIERS
+@import "modifiers/position";
+@import "modifiers/display";
+
+//MIXINS
+@import "mixins"; 
+
+
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+// REMOVES SCROLLBAR
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}

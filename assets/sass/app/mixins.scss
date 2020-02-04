@@ -1,0 +1,271 @@
+$modules: () !default;
+@mixin exports($name) {
+  $module_index: index($modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
+    $modules: append($modules, $name);
+    @content;
+  }
+}
+//SET PROPERTY
+@mixin set($property, $values, $condition:"") {
+  	$px: null;
+  	$rem: null;
+  	$unit: null;
+	@each $value in $values {
+		
+		@if $value == 0 or $value == auto {
+			$px : append($px , $value);
+			$rem: append($rem, $value);
+		}
+		@else{
+			$unit: unit($value);
+			$val: strip-unit($value);
+			@if $unit == "px" or  $unit == "" {
+				$px : append( $px, $val+px );
+				$rem : append( $rem, convert-to-rem($val) );
+			}
+			@if $unit == "rem" {
+				$px : append( $px, convert-to-px($val, $rem-base) );
+				$rem : append( $rem, $val+rem );
+			}
+		}
+	}
+	#{$property}: $px unquote($condition);
+	#{$property}: $rem unquote($condition);
+	
+}
+//HEADINGS
+@mixin headings($from: 1, $to: 6){
+    @for $i from $from through $to{
+      h#{$i}{
+        @content
+      }
+    }
+}
+//BLOCK GLOW
+@mixin block-glowing-effect($selector:focus, $fade-time:300ms, $glowing-effect-color:fade-out($primary-color, .25)) {
+  transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
+
+  &:#{$selector} {
+    box-shadow: 0 0 5px $glowing-effect-color;
+    border-color: $glowing-effect-color;
+  }
+}
+//RADIUS
+@mixin radius($radius:$global-radius) {
+  @if $radius {
+    border-radius: $radius;
+  }
+}
+//BOXSIZING
+@mixin box-sizing($type:border-box) {
+  -webkit-box-sizing: $type; // Android < 2.3, iOS < 4
+     -moz-box-sizing: $type; // Firefox < 29
+          box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
+}
+//CLEAR
+@mixin clearfix {
+	&:before, &:after { content: " "; display: table; }
+	&:after { clear: both; }
+}
+//VISIBILITY
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+//PS LETTERSPACING
+@mixin ps-letter-spacing($val){
+	$output: $val/1000;
+	letter-spacing: $output+em; 
+}
+//BACKGROUND IMAGE
+@mixin background-svg($name, $fallback-extension:'png', $size:false){
+    background-image: url(#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &{
+        background-image: url(#{$name}.#{$fallback-extension});
+    }
+}
+//HAMBURGER
+@mixin hamburger($height, $width, $thickness, $radius, $gap, $color) {
+	height: $height;
+	width: $width;
+	position: relative;
+	margin: 0 auto;
+	@include transform(rotate(0deg));
+	@include transition(0.5s ease-in-out);
+	cursor: pointer;
+	
+	$space: round($height/3);
+
+	span {
+		display: block;
+		position: absolute;
+		height: $thickness;
+		width: 100%;
+		background: $color;
+		border-radius: $radius;
+		opacity: 1;
+		left: 0;
+		@include transform(rotate(0deg));
+		@include transition(0.25s ease-in-out);
+	}	
+	
+  	span:nth-child(1) {
+	  top: 0px;
+	}
+	
+	span:nth-child(2),span:nth-child(3) {
+	  top: $gap*2;
+	}
+	
+	span:nth-child(4) {
+	  top: $gap*4;
+	}
+	body[data-navState="open"] & span:nth-child(1) {
+		top: $gap;
+		width: 0%;
+		left: 50%;
+	}
+	body[data-navState="open"] & span:nth-child(2) {
+		@include transform(rotate(45deg));
+	}
+	body[data-navState="open"] & span:nth-child(3) {
+		@include transform(rotate(-45deg));
+	}
+	body[data-navState="open"] & span:nth-child(4) {
+	  top: $gap*3;
+	  width: 0%;
+	  left: 50%;
+	}
+}
+
+//COLOR OPACITY
+@mixin color-opacity($color, $opacity: 0.3) {
+    color: $color; /* The Fallback */
+    color: rgba($color, $opacity);
+}
+@mixin border-opacity($color, $opacity: 0.3) {
+    border-color: $color; /* The Fallback */
+    border-color: rgba($color, $opacity);
+}
+@mixin background-opacity($color, $opacity: 0.3) {
+    background-color: $color; /* The Fallback */
+    background-color: rgba($color, $opacity);
+}
+//KEYFRAMES
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes $animation-name {
+		@content;
+	}
+	@-moz-keyframes $animation-name {
+		@content;
+	}  
+	@-ms-keyframes $animation-name {
+		@content;
+	}
+	@-o-keyframes $animation-name {
+		@content;
+	}  
+	@keyframes $animation-name {
+		@content;
+	}
+}
+
+//ANIMATION
+@mixin animation($str) {
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	-ms-animation: #{$str};
+	-o-animation: #{$str};
+	animation: #{$str};      
+}
+
+//TRANSITION
+@mixin transition($args) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+@mixin transition-delay($args) {
+	-webkit-transition-delay: $args;
+	-moz-transition-delay: $args;
+	-ms-transition-delay: $args;
+	-o-transition-delay: $args;
+	transition-delay: $args;
+}
+//TRANSFORM
+@mixin transform-origin($args) {
+	-webkit-transform-origin: #{$args};
+	-ms-transform-origin: #{$args};
+	-o-transform-origin: #{$args};
+    transform-origin: #{$args};
+}
+@mixin transform($args) {
+	-webkit-transform: #{$args};
+	-ms-transform: #{$args};
+	-o-transform: #{$args};
+    transform: #{$args};
+}
+//OPACITY
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+//BOX-SHADOW
+@mixin box-shadow($args){
+	-webkit-box-shadow: $args;
+	-moz-box-shadow:    $args;
+	-ms-box-shadow:     $args;
+	-o-box-shadow:      $args;
+	box-shadow:         $args;
+}
+//BORDER-RADIUS
+@mixin border-radius($args){
+	-webkit-border-radius: $args;
+	-moz-border-radius:    $args;
+	-ms-border-radius:     $args;
+	-o-border-radius:      $args;
+	border-radius:         $args;
+}
+
+//CLEARFIX
+%clearfix {
+	*zoom: 1;
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+//HIDE
+%visuallyhidden {
+	margin: -1px;
+	padding: 0;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip: rect(0, 0, 0, 0);
+	position: absolute;
+}
