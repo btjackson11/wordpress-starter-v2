@@ -1,7 +1,4 @@
-$(document).ready(function(){
+"use strict";
 
-});
-
-$(document).on("scroll", function(){
-
-});
+$(document).ready(function () {});
+$(document).on("scroll", function () {});
